@@ -22,11 +22,16 @@
   </modules>
 
   <distributionManagement>
-    <site>
-      <id>site-server</id>
-      <name>Test Project Site</name>
-      <url>file:///tmp/maven-project-site</url>
-    </site>
+    <repository>
+          <id>central</id>
+          <name>DESKTOP-PLUOSB3-releases</name>
+          <url>http://localhost:8081/artifactory/ext-release-local</url>
+      </repository>
+      <snapshotRepository>
+          <id>snapshots</id>
+          <name>DESKTOP-PLUOSB3-snapshots</name>
+          <url>http://localhost:8081/artifactory/ext-snapshot-local</url>
+      </snapshotRepository>
   </distributionManagement>
 
   <build>
