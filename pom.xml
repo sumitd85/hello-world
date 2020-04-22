@@ -25,12 +25,12 @@
     <repository>
           <id>central</id>
           <name>DESKTOP-PLUOSB3-releases</name>
-          <url>http://localhost:8081/artifactory/ext-release-local</url>
+          <url>http://localhost:8081/artifactory/libs-release</url>
       </repository>
       <snapshotRepository>
           <id>snapshots</id>
           <name>DESKTOP-PLUOSB3-snapshots</name>
-          <url>http://localhost:8081/artifactory/ext-snapshot-local</url>
+          <url>http://localhost:8081/artifactory/libs-snapshot</url>
       </snapshotRepository>
   </distributionManagement>
 
