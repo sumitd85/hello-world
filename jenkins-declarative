@@ -8,7 +8,10 @@ stages{
  }}
  stage("Mavan Build"){
 	steps{
-	sh "mvn clean package"
+	withMaven(jdk: 'JAVA_HOME', maven: 'M2_HOME') {
+    sh "mvn clean package"
+}
+	
 }
 	}
 }
