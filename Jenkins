@@ -1,11 +1,15 @@
 pipeline{
-	agent{
-		docker{
-			image 'maven'
-			 args '-v /dockeradmin/.m2:/Newuser@123/.m2'
-		}
-	}	
+	agent { label 'dockerserver' }
+	
 	stages{
+		stage('Back-end') {
+            		agent {
+                		docker {
+                  			label 'dockerserver'  // both label and image
+                  			image 'maven'
+            		    	}
+			}
+        	}
 		stage('verify'){
 			steps{
 				sh '''
