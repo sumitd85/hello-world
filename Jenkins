@@ -2,6 +2,7 @@ pipeline{
 	agent{
 		docker{
 			image 'maven'
+			args '-v /root/.m2:/root/.m2'
 		}
 	}	
 	stages{
@@ -20,8 +21,11 @@ pipeline{
 		}
 		stage("Mavan Build"){
 			steps{
-				sh "mvn clean package"
+				docker.image('maven').withRun('-u root') {
+    					sh "mvn clean package"
+				}
 			}
+			
 		}
 	}
 	post{
