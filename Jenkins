@@ -1,8 +1,8 @@
-pipeline{
-	agent{
-		docker{
+pipeline {
+	agent {
+		docker {
 			image 'maven' 
-			args args '-v $HOME/.m2:/root/.m2:z -u root'
+			args '-v $HOME/.m2:/root/.m2:z -u root'
 		}
 	}	
 	
