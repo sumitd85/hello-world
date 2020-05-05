@@ -9,15 +9,14 @@ pipeline{
                   			image 'maven'
             		    	}
 			}
-        	}
-		stage('verify'){
 			steps{
 				sh '''
 					 mvn --version					 
 				   '''
 				sh 'ls -l "$WORKSPACE"'
 			}
-		}
+        	}
+		
 		stage("Git Checkout"){
 			steps{
 				git credentialsId: 'github', url:'https://github.com/sumitd85/hello-world.git'
