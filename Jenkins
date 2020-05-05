@@ -1,0 +1,32 @@
+pipeline{
+	agent{
+		docker{
+			image 'maven'
+		}
+	}	
+	stages{
+		stage('verify'){
+			steps{
+				sh '''
+					 mvn --version					 
+				   '''
+				sh 'ls -l "$WORKSPACE"'
+			}
+		}
+		stage("Git Checkout"){
+			steps{
+				git credentialsId: 'github', url:'https://github.com/sumitd85/hello-world.git'
+			}
+		}
+		stage("Mavan Build"){
+			steps{
+				sh "mvn clean package"
+			}
+		}
+	}
+	post{
+		success{
+			sh 'echo Build Successfully Completed!!!'
+		}
+	}
+}
