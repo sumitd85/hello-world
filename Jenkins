@@ -21,9 +21,7 @@ pipeline{
 		}
 		stage("Mavan Build"){
 			steps{
-				docker.image('maven').withRun('-u root') {
-    					sh "mvn clean package"
-				}
+    				sh "mvn clean package"				
 			}
 			
 		}
