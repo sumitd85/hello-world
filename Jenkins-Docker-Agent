@@ -1,25 +1,31 @@
-pipeline {
-    agent {
-        docker {
-            image 'maven:3-alpine' 
-            args '-v /root/.m2:/root/.m2' 
-        }
-    }
-    stages {
-        stage('Build') { 
-            steps {
-                sh 'mvn -B -DskipTests clean package' 
-            }
-        }
-        stage('Test') {
-            steps {
-                sh 'mvn test'
-            }
-            post {
-                always {
-                    junit 'target/surefire-reports/*.xml'
+#!/usr/bin/env groovy
+
+@Library('shared-library-1@master') _ //master or whatever branch
+
+pipeline{
+
+      agent {
+                docker {
+                image 'maven'
+                args '-v $HOME/.m2:/root/.m2'
                 }
             }
-        }
-    }
+        
+        stages{
+
+              stage('maven build'){
+                  steps{
+                      script{
+		    	                sh "mvn clean install"
+                      	  }
+               	     }  
+                 }	
+                 
+                 stage ('Check logs') {
+                    steps {
+                        filterLogs ('WARNING', 1)
+                    }
+                }
+		
+           }	       	     	         
 }
