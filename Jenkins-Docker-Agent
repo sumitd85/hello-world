@@ -10,10 +10,7 @@ pipeline{
                 args '-v $HOME/.m2:/root/.m2'
                 }
             }
-	tools {
-    jdk 'jdk_1.8.0_252'
-  
-  }
+	
         
         stages{
 
